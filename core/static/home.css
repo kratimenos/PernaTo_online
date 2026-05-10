@@ -29,6 +29,14 @@ body {
     }
 }
 
+.scroll-animate {
+    opacity: 0; 
+}
+
+.animate-active {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
 
 .highlighter {
     color: rgb(190, 2, 2);
@@ -513,6 +521,7 @@ nav.top a:hover {
 .footer-section.links {
     display: flex;
     flex-direction: column;
+    align-items: flex-start; /* Align links to the left */
 }
 
 .footer-section.links a {
