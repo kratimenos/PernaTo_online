@@ -1,6 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
+
 <html lang="el">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +14,15 @@
     <link rel="stylesheet" href="{% static 'home.css' %}">
     <link rel="icon" href="{% static 'logo.png' %}" type="image/x-icon">
 </head>
+
 <body>
+
+    <!-- Navigation Bar -->
     <nav class="top">
         <img src="{% static 'logo.png' %}" alt="Logo" class="nav-logo">
         <a href="{% url 'courses' %}" class="nav-about-us">ΜΑΘΗΜΑΤΑ</a>
         <a href="{% url 'exercises' %}" class="nav-about-us">ΕΡΓΑΣΙΕΣ</a>
+        <a href="{% url 'become_assistant' %}" class="nav-become-assistant">ΓΙΝΕ ΜΕΝΤΟΡΑΣ</a>
         <a href="{% url 'about' %}" class="nav-about-us">ΣΧΕΤΙΚΑ ΜΕ ΜΑΣ</a>
         <a href="{% url 'contact' %}" class="nav-about-us">ΕΠΙΚΟΙΝΩΝΙΑ</a>
         {% if user.is_authenticated %}
@@ -25,7 +31,11 @@
             <a href="{% url 'login' %}">ΣΥΝΔΕΣΗ</a>
         {% endif %}
     </nav>
+
+    <!-- Main Content -->
     <div class="container">
+
+        <!-- Header Section  -->
         <div class="header">
             <p class="header-title">ΠΕΡΝΑ ΤΟ ΜΑΘΗΜΑ ΣΟΥ<br>ΜΑΖΙ ΜΑΣ</p>
             <p class="content">Βρες τον κατάλληλο βοηθό για εσένα!</p>
@@ -33,10 +43,14 @@
                 <a href="{% url 'courses' %}" class="header-button">ΞΕΚΙΝΑ ΤΩΡΑ</a>
             </div>
         </div>
+
+
+        <!-- Popular Courses Section -->
         <div class="popular-courses">
             <p class="popular-courses-title">ΔΗΜΟΦΙΛΗ ΜΑΘΗΜΑΤΑ</p>
             <hr class="divider">
             <div class="courses-grid">
+
                 <a href="#" class="maths-button">
                     <div class="maths-image">
                         <img src="{% static 'maths.png' %}" alt="Μάθημα">
@@ -45,6 +59,7 @@
                         <h3>ΜΑΘΗΜΑΤΙΚΑ</h3>
                     </div>
                 </a>
+
                 <a href="#" class="programming-button">
                     <div class="programming-image">
                         <img src="{% static 'programming.png' %}" alt="Μάθημα">
@@ -53,6 +68,7 @@
                         <h3>ΠΛΗΡΟΦΟΡΙΚΗ</h3>
                     </div>
                 </a>
+
                 <a href="#" class="physics-button">
                     <div class="physics-image">
                         <img src="{% static 'physics.png' %}" alt="Μάθημα">
@@ -65,6 +81,8 @@
             <hr class="divider">
         </div>
 
+
+        <!-- Exercises Section -->
         <div class="exercises">
             <h2 class="exercises-title">ΑΝΑΘΕΣΕ ΤΗΝ ΕΡΓΑΣΙΑ ΣΟΥ</h2>
     
@@ -83,26 +101,61 @@
         </div>
 
 
+        <!-- Search Section -->
         <div class="search">
             <p class="search-title">Τι μάθημα ψάχνεις;</p>
             <input type="text" placeholder="Αναζήτηση..." class="search-input">
             <hr class="divider">
         </div>
 
+
+        <!-- About Us Section -->
         <div class="about-us">
             <h2 class="about-us-title">ΣΧΕΤΙΚΑ ΜΕ ΕΜΑΣ</h2>
-            <p class="about-us-content">Στο <span class="highlighter">PernaTo</span>, πιστεύουμε στη δύναμη της φοιτητικής αλληλοβοήθειας! Για εμάς, η υποστήριξη στα μαθήματα δεν χρειάζεται να είναι απρόσωπη ούτε να βασίζεται αυστηρά σε παραδοσιακούς καθηγητές. Δημιουργήσαμε ένα καινοτόμο <span class="highlighter">online φροντιστήριο</span> όπου η γνώση μοιράζεται από φοιτητές... για φοιτητές. Το όραμά μας είναι να χτίσουμε μια δυναμική κοινότητα όπου οι νεότεροι φοιτητές βρίσκουν την καθοδήγηση που χρειάζονται για να περάσουν τα μαθήματά τους και να ολοκληρώσουν τις εργασίες τους, μαθαίνοντας από άτομα που βρέθηκαν πρόσφατα στην ίδια ακριβώς θέση. Ταυτόχρονα, δίνουμε τη δυνατότητα σε φοιτητές που έχουν ήδη κατακτήσει τη γνώση να γίνουν οι ίδιοι μέντορες, αποκτώντας ένα επιπλέον εισόδημα βοηθώντας τους συμφοιτητές τους. Στο PernaTo, κάνουμε το διάβασμα ομαδική υπόθεση και την επιτυχία πιο προσιτή σε όλους!</p>
+            <p class="about-us-content">Στο <span class="highlighter">PernaTo</span>, πιστεύουμε στη δύναμη της φοιτητικής αλληλοβοήθειας! Για εμάς, η υποστήριξη στα μαθήματα δεν χρειάζεται να είναι απρόσωπη ούτε να βασίζεται αυστηρά σε παραδοσιακούς καθηγητές. Δημιουργήσαμε ένα καινοτόμο <span class="highlighter">online φροντιστήριο</span> όπου η γνώση μοιράζεται από φοιτητές... <span class="highlighter">για φοιτητές</span>. Το όραμά μας είναι να χτίσουμε μια δυναμική κοινότητα όπου οι νεότεροι φοιτητές βρίσκουν την καθοδήγηση που χρειάζονται για να περάσουν τα μαθήματά τους και να ολοκληρώσουν τις εργασίες τους, μαθαίνοντας από άτομα που βρέθηκαν πρόσφατα στην <span class="highlighter">ίδια ακριβώς θέση</span>. Ταυτόχρονα, δίνουμε τη δυνατότητα σε φοιτητές που έχουν ήδη κατακτήσει τη γνώση να γίνουν οι ίδιοι μέντορες, αποκτώντας ένα <span class="highlighter">επιπλέον εισόδημα</span> βοηθώντας τους συμφοιτητές τους. Στο PernaTo, κάνουμε το διάβασμα ομαδική υπόθεση και την επιτυχία πιο προσιτή σε όλους!</p>
         </div>
 
-        
 
-
+        <!-- Become Assistant Section -->
         <div class="be-assistant">
             <h2 class="be-assistant-title">Γίνε Μέντορας</h2>
-            <p class="be-assistant-content">Εάν είσαι φοιτητής και έχεις εμπειρία σε κάποιο μάθημα, μπορείς να γίνεις μέντορας στο PernaTo! Βοήθησε άλλους φοιτητές και κέρδισε επιπλέον εισόδημα.</p>
+            <p class="be-assistant-content">Εάν είσαι φοιτητής και έχεις εμπειρία σε κάποιο μάθημα, <span class="highlighter">μπορείς να γίνεις μέντορας</span> στο PernaTo! Βοήθησε άλλους φοιτητές και κέρδισε επιπλέον εισόδημα.</p>
             <a href="{% url 'become_assistant' %}" class="be-assistant-button">ΚΑΝΕ ΑΙΤΗΣΗ ΕΔΩ</a>
-            <hr class="divider">
         </div>
+
+
+        <!-- Footer Section -->
+        <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section about-brand">
+                <img src="{% static 'logo-removebg.png' %}" alt="Logo" class="footer-logo">
+                <p>Το online φροντιστήριο από φοιτητές... για φοιτητές. Κάνουμε την επιτυχία πιο προσιτή σε όλους!</p>
+            </div>
+            
+            <div class="footer-section links">
+                <h4>Γρήγορη Πλοήγηση</h4>
+                <a href="{% url 'courses' %}">Μαθήματα</a>
+                <a href="{% url 'exercises' %}">Εργασίες</a>
+                <a href="{% url 'become_assistant' %}">Γίνε Μέντορας</a>
+                <a href="{% url 'contact' %}">Επικοινωνία</a>
+            </div>
+
+            <div class="footer-section social">
+                <h4>Βρες μας στα Social</h4>
+                <div class="social-icons">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 PernaTo. All rights reserved.</p>
+        </div>
+    </footer>
+
     </div>
+
 </body>
 </html>

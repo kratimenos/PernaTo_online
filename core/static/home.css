@@ -3,92 +3,76 @@
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    box-sizing: border-box;
+
+    box-sizing: border-box; 
 }
  
 body {
     background: #e3e3ff;
     color: white;
-
     text-align: center;
 
     margin: 0;
     padding: 0;
 }
 
-/* 1. Ορίζουμε το animation */
+/* Animations */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px); /* Ξεκινάει 30 pixels πιο κάτω */
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);    /* Καταλήγει στην κανονική του θέση */
+        transform: translateY(0);
     }
 }
 
-@keyframes fadeInOnly {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
 
 .highlighter {
     color: rgb(190, 2, 2);
     font-weight: bold;
 }
-/* nav */
+
+/* Navigation Bar */
+
+nav.top {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+
+    background-color: rgb(255, 255, 255);
+    max-height: 60px; 
+    width: 100%;
+    padding: 0rem 1.1rem; 
+}
 
 .nav-logo {
-    height: 50px; /* Ή όσο ταιριάζει για να μην "τερματίζει" το navbar */
+    height: 50px; 
     width: auto;
     object-fit: contain;
 }
 
-nav.top {
-    display: flex;
-    justify-content: space-between; /* Σπρώχνει τα στοιχεία στις άκρες */
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    padding: 0rem 1.1rem; /* Δώσε λίγο padding πάνω-κάτω για να πάρει ύψος */
-    max-height: 60px; 
-}
-
-/* Sign-in */
-
+/* Buttons */
 nav.top a {
     color: rgb(11, 11, 65); 
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
 
-
     transition: all 0.3s ease;
 }
 
+/* Buttons hover effect */
 nav.top a:hover {
     color: rgb(50, 15, 147);
     transform: scale(1.05);
     cursor: pointer;
 }
 
-/* About Us button */
 
-.nav-about-us {
-    background: transparent;
-    border: none;
-    color: rgb(11, 11, 65);
-    font-weight: bold;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.nav-about-us:hover {
-    color: rgb(50, 15, 147);
-    transform: scale(1.1);
-}
+/* Header Section */
 
 .header {
     position: relative;
@@ -97,60 +81,61 @@ nav.top a:hover {
     background-size: cover;
     background-position: center;
     height: 620px;
+
     display: flex;
-    flex-direction: column; /* Τα βάζει το ένα κάτω από το άλλο */
-    justify-content: center; /* Τα κεντράρει κάθετα */
-    align-items: flex-start; /* Τα στοιχίζει στα αριστερά */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: flex-start; /* Align items to the left */
     text-align: left;
-    padding-left: 80px; /* Εδώ βάζουμε το κενό από αριστερά, ΜΙΑ φορά για όλα! */
+
+    padding-left: 80px; 
     gap: 10px;
 }
 
 .header-title, 
 .content {
-    opacity: 0; /* Ξεκινάνε αόρατα */
+    opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
 }
 
 .header-title { animation-delay: 0.2s; }
 .content      { animation-delay: 0.4s; }
 
-/* Εδώ δημιουργούμε το εφέ σβησίματος */
+
 .header::before {
     content: ""; 
-    position: absolute; /* ΕΠΕΣΤΡΕΨΕ ΕΔΩ! Είναι απαραίτητο για το overlay */
+    position: absolute; /* Position the overlay to cover the left half of the header */
     top: 0;
     left: 0;
-    width: 40%; /* Πόσο μακριά θέλεις να φτάνει το σβήσιμο */
+    width: 40%; /* Cover the left 40% of the header */
     height: 100%;
     
-    /* Το μυστικό είναι εδώ: Από σκούρο μπλε (αριστερά) σε διαφανές (δεξιά) */
-    background: linear-gradient(to right, rgba(14, 52, 98, 0.9) 0%, rgba(14, 52, 98, 0) 100%);
+    background: linear-gradient(to right, rgba(14, 52, 98, 0.9) 0%, rgba(14, 52, 98, 0) 100%); 
     
-    z-index: 1; /* Φροντίζει να είναι πάνω από την εικόνα */
-    pointer-events: none; /* Επιτρέπει στο ποντίκι να αλληλεπιδρά με την εικόνα από κάτω */
+    z-index: 1; /* Place the overlay behind the text */
+    pointer-events: none; /* Allow clicks to pass through the overlay */
 }
 
 .header-title {
-    position: relative; /* Απαραίτητο για να πιάσει το z-index! */
+    position: relative; /* Ensure the title is above the overlay */
 
     font-size: 3.8rem;
     font-weight: bold;
     text-shadow: #06062b 0px 0px 1px, #06062b 0px 0px 1px;
-    z-index: 2; /* Πιο πάνω από το overlay */
+    z-index: 2; /* Ensure the title is above the overlay */
     color: white;
-    margin: 0; /* Βάζουμε 0 γιατί χρησιμοποιούμε το gap του header */
+    margin: 0; 
 }
 
 .content {
-    position: relative; /* Απαραίτητο για να πιάσει το z-index! */
+    position: relative; 
 
     font-size: 2.2rem;
     text-shadow: #06062b 0px 0px 1px, #06062b 0px 0px 1px;
-    z-index: 2; /* Πιο πάνω από το overlay */
+    z-index: 2; 
     color: rgb(255, 255, 255);
     font-size: 1.4rem;
-    margin: 0; /* Βάζουμε 0 γιατί χρησιμοποιούμε το gap του header */
+    margin: 0; 
     margin-top: -16px;
 }
 
@@ -158,11 +143,11 @@ nav.top a:hover {
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
     animation-delay: 0.6s;
-    margin-top: 30px; /* Μετάφερε το margin εδώ για να μην επηρεάζει το hover */
+    margin-top: 30px; 
     z-index: 2;
 }
 
-/* Το κουμπί αναλαμβάνει μόνο το στυλ και το hover */
+
 .header-button {
     position: relative;
     z-index: 2;
@@ -173,25 +158,24 @@ nav.top a:hover {
     font-size: 1.7rem;
     text-decoration: none;
     font-weight: bold;
-    display: inline-block; /* Απαραίτητο για να δουλεύουν σωστά τα transforms */
+    display: inline-block; /* Ensure the button is treated as a block for better clickability */
     transition: all 0.3s ease;
 }
 
 .header-button:hover {
     background-color: rgb(255, 210, 80);
-    transform: scale(1.05) translateY(-5px); /* Τώρα θα δουλεύει τέλεια! */
+    transform: scale(1.05) translateY(-5px); 
 }
+
+
+/* Popular Courses Section */
 
 .popular-courses {
     margin: 40px 80px;
     align-items: center;
 
     opacity: 0;
-    /* Προσθήκη αυτών των γραμμών */
     animation: fadeInUp 1s ease-out forwards; 
-    /* 1s = διάρκεια ενός δευτερολέπτου */
-    /* ease-out = ξεκινάει γρήγορα και επιβραδύνει ομαλά */
-    /* forwards = διατηρεί την τελική κατάσταση (να παραμείνει ορατό) */
     animation-delay: 0.8s;
 }
 
@@ -209,19 +193,16 @@ nav.top a:hover {
 }
 
 .courses-grid {
-    display: flex;         /* Τα βάζει το ένα δίπλα στο άλλο */
-    justify-content: center; /* Τα κεντράρει οριζόντια στη σελίδα */
-    flex-wrap: wrap;       /* Αν η οθόνη μικρύνει πολύ, τα στέλνει από κάτω για να μη χαλάνε */
-    gap: 30px;            /* Η απόσταση μεταξύ των καρτών */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
     margin-top: 30px;
 }
 
 
 /* Course buttons */
-
 /* maths */
-
-
 .maths-button {
     display: block;
     width: 300px;
@@ -229,25 +210,25 @@ nav.top a:hover {
     color: #333;
     background: #fff;
     border-radius: 12px;
-    overflow: hidden; /* Για να "κόβεται" η εικόνα στις γωνίες */
+    overflow: hidden; /* Ensure the image and content are contained within the button */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .maths-button:hover {
-    transform: translateY(-10px); /* Σηκώνεται ελαφρά */
+    transform: translateY(-10px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .maths-image img {
     width: 100%;
     height: 180px;
-    object-fit: cover; /* Κάνει την εικόνα να γεμίζει το χώρο χωρίς να παραμορφώνεται */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
 }
 
 .maths-content {
     padding: 15px;
-    text-align: center; /* Στοίχιση αριστερά για minimal ύφος */
+    text-align: center;
 }
 
 .maths-content h3 {
@@ -257,7 +238,6 @@ nav.top a:hover {
 }
 
 /* programming */
-
 .programming-button {
     display: block;
     width: 300px;
@@ -265,25 +245,25 @@ nav.top a:hover {
     color: #333;
     background: #fff;
     border-radius: 12px;
-    overflow: hidden; /* Για να "κόβεται" η εικόνα στις γωνίες */
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .programming-button:hover {
-    transform: translateY(-10px); /* Σηκώνεται ελαφρά */
+    transform: translateY(-10px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .programming-image img {
     width: 100%;
     height: 180px;
-    object-fit: cover; /* Κάνει την εικόνα να γεμίζει το χώρο χωρίς να παραμορφώνεται */
+    object-fit: cover;
 }
 
 .programming-content {
     padding: 15px;
-    text-align: center; /* Στοίχιση αριστερά για minimal ύφος */
+    text-align: center;
 }
 
 .programming-content h3 {
@@ -293,7 +273,6 @@ nav.top a:hover {
 }
 
 /* physics */
-
 .physics-button {
     display: block;
     width: 300px;
@@ -301,25 +280,25 @@ nav.top a:hover {
     color: #333;
     background: #fff;
     border-radius: 12px;
-    overflow: hidden; /* Για να "κόβεται" η εικόνα στις γωνίες */
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .physics-button:hover {
-    transform: translateY(-10px); /* Σηκώνεται ελαφρά */
+    transform: translateY(-10px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .physics-image img {
     width: 100%;
     height: 180px;
-    object-fit: cover; /* Κάνει την εικόνα να γεμίζει το χώρο χωρίς να παραμορφώνεται */
+    object-fit: cover;
 }
 
 .physics-content {
     padding: 15px;
-    text-align: center; /* Στοίχιση αριστερά για minimal ύφος */
+    text-align: center;
 }
 
 .physics-content h3 {
@@ -329,14 +308,15 @@ nav.top a:hover {
 }
 
 
+/* Exercises Section */
 .exercises-container {
     display: flex;
-    flex-direction: column; /* Τα βάζει το ένα κάτω από το άλλο */
-    align-items: center;    /* Τα κεντράρει οριζόντια */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 30px;             /* Κενό ανάμεσα στην κάρτα και το κείμενο */
+    gap: 30px;
     margin: 40px auto;
-    max-width: 900px;      /* Περιορίζει το πλάτος για να φαίνεται ωραίο */
+    max-width: 900px;
 }
 
 .exercises-title {
@@ -346,7 +326,6 @@ nav.top a:hover {
     color: rgb(11, 11, 65);
 }
 
-/* Η εμφάνιση της κάρτας-κουμπιού (Ακριβώς όπως τα courses) */
 .exercises-button {
     display: block;
     width: 300px;
@@ -381,21 +360,17 @@ nav.top a:hover {
     font-family: "Roboto Condensed", sans-serif;
 }
 
-/* Η εμφάνιση του κειμένου δίπλα από την κάρτα */
 .exercises-description {
     font-size: 1.2rem;
     line-height: 1.6;
     color: rgb(11, 11, 65);
-    text-align: center;    /* Κεντράρισμα κειμένου */
-    max-width: 800px;      /* Για να μην απλώνει υπερβολικά στις μεγάλες οθόνες */
+    text-align: center;
+    max-width: 800px;
     margin: 0;
 }
 
 
-
-
 /* Search bar */
-
 
 .search {
     margin: 40px 80px;
@@ -412,8 +387,8 @@ nav.top a:hover {
     width: 300px;
     padding: 10px 25px;
     border: 1px solid #ccc;
-    border-radius: 50px; /* Δημιουργεί το οβάλ σχήμα */
-    outline: none;
+    border-radius: 50px;
+    outline: none; /* Remove default focus outline */
     font-size: 1rem;
     background-color: #f9f9f9;
     transition: all 0.3s ease;
@@ -424,11 +399,11 @@ nav.top a:hover {
     background-color: #fff;
     border-color: #06062b;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    width: 350px; /* Μικρή επέκταση για εφέ "ζωντάνιας" */
+    width: 350px;
 }
 
 
-
+/* About Us Section */
 
 .about-us {
     margin: 40px 80px;
@@ -446,11 +421,11 @@ nav.top a:hover {
     line-height: 1.6;
     color: rgb(11, 11, 65);
     max-width: 800px;
-    margin: 0 auto; /* Κεντράρει το κείμενο */
+    margin: 0 auto;
 }
 
 
-
+/* Be Assistant Section */
 
 .be-assistant {
     margin: 40px 80px;
@@ -468,7 +443,7 @@ nav.top a:hover {
     line-height: 1.6;
     color: rgb(11, 11, 65);
     max-width: 800px;
-    margin: 0 auto; /* Κεντράρει το κείμενο */
+    margin: 0 auto;
 }
 
 .be-assistant-button {
@@ -487,4 +462,92 @@ nav.top a:hover {
 .be-assistant-button:hover {
     background-color: rgb(50, 15, 147);
     transform: scale(1.05);
+}
+
+
+/* Footer Section */
+
+.site-footer {
+    background-color: rgb(11, 11, 65);
+    color: white;
+    padding: 50px 20px 20px;
+    margin-top: 60px;
+    text-align: left;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly between sections */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1; /* Allow sections to grow and fill available space */
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 5px;
+}
+
+.footer-section h4 {
+    color: rgb(255, 192, 32);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-section.about-brand p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #e3e3ff;
+}
+
+/* Links Section */
+.footer-section.links {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section.links a {
+    color: #e3e3ff;
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.footer-section.links a:hover {
+    color: rgb(255, 192, 32);
+    transform: translateX(5px);
+}
+
+/* Social Media Icons */
+.social-icons a {
+    display: inline-block;
+    color: white;
+    font-size: 2rem;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: rgb(255, 192, 32);
+    transform: scale(1.2);
+}
+
+/* Copyright */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #a0a0c0;
 }
