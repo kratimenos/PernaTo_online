@@ -537,6 +537,28 @@ nav.top a:hover {
     transform: translateX(5px);
 }
 
+/* Contact Info Section */
+.footer-section.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-section.contact-info a {
+    color: #e3e3ff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Κενό ανάμεσα στο εικονίδιο και το κείμενο */
+}
+
+.footer-section.contact-info a:hover {
+    color: rgb(255, 192, 32);
+    transform: translateX(5px);
+}
+
 /* Social Media Icons */
 .social-icons a {
     display: inline-block;

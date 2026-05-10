@@ -104,11 +104,11 @@
 
         <!-- Search Section -->
         <div class="search scroll-animate">
-            <div class="search">
-                <p class="search-title">Τι μάθημα ψάχνεις;</p>
-                <input type="text" placeholder="Αναζήτηση..." class="search-input">
-                <hr class="divider">
-            </div>
+            <p class="search-title">Τι μάθημα ψάχνεις;</p>
+            <form action="{% url 'search' %}" method="GET">
+                <input type="text" name="q" placeholder="Αναζήτηση..." class="search-input">
+            </form>
+            <hr class="divider">
         </div>
 
 
@@ -145,6 +145,11 @@
                 <a href="{% url 'exercises' %}">Εργασίες</a>
                 <a href="{% url 'become_assistant' %}">Γίνε Μέντορας</a>
                 <a href="{% url 'contact' %}">Επικοινωνία</a>
+            </div>
+
+            <div class="footer-section contact-info">
+                <h4>Επικοινωνία</h4>
+                <a href="mailto:info@pernato.gr"><i class="fas fa-envelope"></i> info@pernato.gr</a>
             </div>
 
             <div class="footer-section social">
